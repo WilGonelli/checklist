@@ -1,27 +1,34 @@
 import { Router } from "express";
-import { verifyToken } from "../service/auth.user.js";
+import { verifyToken } from "../middleware/user/auth.user.js";
 
 import {
-  getAllUsers,
-  getUserByEmail,
-  getQuestions,
-  postQuestions,
+  listAllUsers,
+  loginUser,
+  createUser,
+} from "../controller/user/db.controler.js";
+import {
+  findLastQuastion,
+  createQuestion,
+} from "../controller/questions/question.controller.js";
+import {
   postChecklistStatus,
   getChecklistStatus,
-  createUser,
-} from "../controller/db.controler.js";
+} from "../controller/checklist/checklist.controller.js";
+import { listAllForklifts } from "../controller/forklift/forklift.controller.js";
 
 const router = Router();
 
-router.post("/login", getUserByEmail);
+router.post("/login", loginUser);
 
-router.get("/users", verifyToken, getAllUsers);
+router.get("/users", verifyToken, listAllUsers);
 router.post("/user", verifyToken, createUser);
 
-router.get("/questions", verifyToken, getQuestions);
-router.post("/questions", postQuestions);
+router.get("/questions", verifyToken, findLastQuastion);
+router.post("/questions", verifyToken, createQuestion);
 
 router.get("/checklist", verifyToken, getChecklistStatus);
 router.post("/checklist", verifyToken, postChecklistStatus);
+
+router.get("/forklift", verifyToken, listAllForklifts);
 
 export default router;
