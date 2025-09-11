@@ -25,6 +25,7 @@ export class UserService {
   ) {
     const password = this.generateRandomPassword();
     console.log(password);
+
     const passwordHash = await bcrypt.hash(password, 10);
 
     const user = new User(name, email, passwordHash, role);

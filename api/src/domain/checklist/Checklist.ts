@@ -21,8 +21,8 @@ export class Checklist {
       user_name: this.user_name,
       user_email: this.user_email,
       forklift_name: this.forklift_name,
+      forklift_id: this.forklift_id,
       checklist_status: this.checklist_status,
-      // checklist_responses: this.checklist_responses,
       created_at: new Date(
         this.timestamp ? parseInt(this.timestamp) : ""
       ).toLocaleString(),

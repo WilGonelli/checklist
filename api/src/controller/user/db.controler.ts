@@ -23,7 +23,7 @@ const loginUser = async (req: Request, res: Response) => {
     const token = await userService.login(email, password, bcrypt.compare);
     res.json({ token: token });
   } catch (err) {
-    res.status(401).json({ error: (err as Error).message });
+    res.status(401).send((err as Error).message);
   }
 };
 

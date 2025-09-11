@@ -20,9 +20,14 @@ export class ChecklistService {
     await this.repository.postChecklist(checklist);
   }
 
-  async findAll() {
-    const rows = await this.repository.getAllChecklis();
+  async findAllById(id_forklift: number) {
+    const rows = await this.repository.getAllChecklis(id_forklift);
 
+    return rows;
+  }
+
+  async findLasts() {
+    const rows = await this.repository.getLastChecklists();
     return rows?.map((c) => c.toExport());
   }
 }

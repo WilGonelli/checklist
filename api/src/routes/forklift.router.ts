@@ -13,6 +13,7 @@ import {
 import {
   postChecklistStatus,
   getChecklistStatus,
+  getLastChecklist,
 } from "../controller/checklist/checklist.controller.js";
 import { listAllForklifts } from "../controller/forklift/forklift.controller.js";
 
@@ -27,6 +28,7 @@ router.get("/questions", verifyToken, findLastQuastion);
 router.post("/questions", verifyToken, createQuestion);
 
 router.get("/checklist", verifyToken, getChecklistStatus);
+router.get("/lastchecklist", verifyToken, getLastChecklist);
 router.post("/checklist", verifyToken, postChecklistStatus);
 
 router.get("/forklift", verifyToken, listAllForklifts);

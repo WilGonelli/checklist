@@ -1,0 +1,67 @@
+@import url("../../styles/Colors.module.css");
+@import url("../../styles/Fonts.module.css");
+
+.defaultStyle {
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: var(--small-font-size);
+  font-weight: var(--bigger-font-weight);
+  font-family: var(--title);
+  transition: 1s;
+  cursor: pointer;
+
+  & :hover {
+    opacity: .5;
+  }
+
+}
+
+.defaultStyle[disabled] {
+  cursor: default;
+
+  & :hover {
+    opacity: 1;
+  }
+}
+
+
+
+.btnAlignTextCenter {
+  text-align: center;
+}
+
+.btnAlignTextStart {
+  text-align: left;
+  padding: 12px 2rem;
+}
+
+.btnFullColor {
+  background-color: var(--secundary-blue);
+  color: var(--primary-white);
+  width: 100%;
+}
+
+.btnFullLightColor {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  width: 100%;
+}
+
+.btnFullUncolor {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  width: 100%;
+}
+
+.btnAutoLightColor {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  width: fit-content;
+}
+
+.btnAutoColor {
+  background-color: var(--secundary-blue);
+  color: var(--primary-white);
+  width: fit-content;
+}

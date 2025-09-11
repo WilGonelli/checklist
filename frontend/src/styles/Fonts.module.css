@@ -1,0 +1,16 @@
+:root {
+  /* size of the fonts */
+  --small-font-size: 1rem;
+  --middle-font-size: 1.5rem;
+  --big-font-size: 2rem;
+  --bigger-font-size: 3rem;
+
+  /* weight of the fonts */
+  --small-font-weight: 100;
+  --middle-font-weight: 500;
+  --big-font-weight: 800;
+  --bigger-font-weight: bold;
+
+  /* font family default */
+  --title: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

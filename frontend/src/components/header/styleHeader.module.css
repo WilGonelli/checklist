@@ -1,0 +1,65 @@
+@import url("../../styles/Fonts.module.css");
+@import url("../../styles/Colors.module.css");
+
+.container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  height: 120px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 24px;
+}
+
+.containerRouting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.titleRouting {
+  font-size: var(--big-font-size);
+  font-weight: var(--bigger-font-weight);
+}
+
+.contanerUser {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 16px;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.iconUser {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray);
+  color: var(--gray-light);
+}
+
+.userInfo {
+  font-size: var(--small-font-size);
+  text-transform: capitalize;
+}
+
+.userName {
+  color: var(--black);
+  font-weight: var(--bigger-font-weight);
+  text-transform: capitalize;
+}
+
+.userRole {
+  text-transform: capitalize;
+  color: var(--black-light);
+  font-weight: var(--middle-font-weight);
+}

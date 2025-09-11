@@ -3,7 +3,7 @@ import type { IChecklist } from "../../domain/checklist/checklist.interface.js";
 import sql from "../../config/db.postgres.js";
 
 export class ChecklistRepository implements IChecklist {
-  async getAllChecklis(): Promise<Checklist[]> {
+  async getAllChecklis(id_forklift: number): Promise<Checklist[]> {
     const rows = await sql`SELECT 
                           c.id as checklist_id,
                           c.checklist_status,
@@ -15,7 +15,8 @@ export class ChecklistRepository implements IChecklist {
                           f.*
                         FROM checklist c
                         JOIN users u ON c.id_user = u.user_id
-                        JOIN forklifts f ON c.id_forklift = f.id;`;
+                        JOIN forklifts f ON c.id_forklift = f.id
+                        WHERE c.id_forklift = ${id_forklift};`;
 
     return rows.map(
       (r) =>
@@ -42,5 +43,37 @@ export class ChecklistRepository implements IChecklist {
             ${JSON.parse(
               JSON.stringify(checklist.checklist_responses)
             )}::jsonb)`;
+  }
+
+  async getLastChecklists(): Promise<Checklist[]> {
+    const rows = await sql`SELECT DISTINCT ON(c.id_forklift)
+                          c.id as checklist_id,
+                          c.checklist_status,
+                          c.id_forklift,
+                          c.checklist_responses,
+                          c.timestamp_ms,
+                          u.user_name,
+                          u.user_email,
+                          u.user_role,
+                          f.*
+                        FROM checklist c
+                        JOIN users u ON c.id_user = u.user_id
+                        JOIN forklifts f ON c.id_forklift = f.id;`;
+
+    return rows.map(
+      (r) =>
+        new Checklist(
+          r.id_forklift,
+          r.id_user,
+          r.checklist_status,
+          r.checklist_responses,
+          r.user_name,
+          r.user_email,
+          r.user_role,
+          r.forklift_name,
+          r.timestamp_ms,
+          r.checklist_id
+        )
+    );
   }
 }
